@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <title>Individual song</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <div th:replace="template::header"></div>
+    <section class="text-center mt-3 mb-5">
+        <div class="container">
+            <h1>Songs</h1>
+            <p class="pt-5">Here you can create, edit and delete your favorite songs</p>
+        </div>
+
+    </section>
+    </div>
+    <div class="container">
+        <div class="container">
+            <div class="d-flex justify-content-start align-items-center mb-4">
+                <a style="width: 200px" href="../spotify-app/songs/create" class="btn btn-dark">Add new song</a>
+
+                <div class="input-group ms-2">
+                    <input id="songId" style="width: 100px" type="text" class="form-control" onkeydown="delayedSubmit()" placeholder="Search by id">
+                    <input id="songName" style="width: 100px; margin-left: 10px" type="text" class="form-control" onkeyup="delayedSubmitSongName()" placeholder="Search by name">
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Artist</th>
+                        <th scope="col">Album name</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr>
+                            <td th:text="${song.songId}"></td>
+                            <td th:text="${song.songName}">Mark</td>
+                            <td th:text="${song.artist.name}">Otto</td>
+                            <td th:text="${song.album.name}">@mdo</td>
+                            <td>
+                                <a class="icon-link" th:href="@{/spotify-app/songs/delete/{songId}(songId=${song.songId})}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: dimgrey; margin-left: 10px; margin-right: 8px;" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
+                                        <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5zm13-3H1v2h14zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/>
+                                    </svg>
+                                </a>
+                                <a  th:href="@{../../spotify-app/songs/update/form/{songId}(songId=${song.songId})}" class="icon-link" href="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: dimgrey;" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
+                                    </svg>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+<script th:inline="javascript">
+    var delayTimer;
+
+    function submitForm() {
+        var songId = document.getElementById('songId').value;
+        window.location.href = '/spotify-app/songs/' + songId;
+    }
+
+    function delayedSubmit() {
+        clearTimeout(delayTimer);
+        delayTimer = setTimeout(submitForm, 1000);
+    }
+
+    function submitFormSongName() {
+        var songName = document.getElementById('songName').value;
+        window.location.href = '/spotify-app/songs/songName/' + songName;
+    }
+
+    function delayedSubmitSongName() {
+        clearTimeout(delayTimer);
+        delayTimer = setTimeout(submitFormSongName, 1000);
+    }
+</script>
+
+

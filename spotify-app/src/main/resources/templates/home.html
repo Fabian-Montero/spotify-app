@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <title>Songs List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <div th:replace="template::header"></div>
+    <section class="text-center mt-3 mb-5">
+        <div class="container">
+            <h1> Spotify App</h1>
+            <p class="pt-5">Here you can create, edit and delete your favorite songs,albums and artists.</p>
+        </div>
+
+    </section>
+    <div class="mt-4">
+        <div class="container mt-5 pt-4">
+            <div class="container mt-4">
+                <div class="row">
+                    <!-- Primer card -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="https://media.cnn.com/api/v1/images/stellar/prod/231206144809-christmas-songs-piano-stock.jpg?c=original" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Songs</h5>
+                                <p class="card-text">Create, edit and delete your favorite songs.</p>
+                                <a href="/spotify-app/songs" class="btn btn-primary">Go to songs</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Segundo card -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="https://schoolofrock.imgix.net/img/news-article-hero@2x/cover-1-1669059676.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Artists</h5>
+                                <p class="card-text">Create, edit and delete your favorite artists.</p>
+                                <a href="/spotify-app/artists" class="btn btn-primary">Go to artists</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tercer card -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="https://pyxis.nymag.com/v1/imgs/725/9bb/f375282dbf925a451cf69290dc81145b96-03-yic-music-albums.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Albums</h5>
+                                <p class="card-text">Create, edit and delete your favorite albums.</p>
+                                <a href="/spotify-app/albums" class="btn btn-primary">Go to albums</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Repite la estructura para más cards según sea necesario -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container">
+    </div>
+    <div class="container">
+<!--        <div class="container">-->
+<!--            <div th:each="song : ${allSongs}">-->
+<!--                &lt;!&ndash; Aquí puedes mostrar información de cada canción &ndash;&gt;-->
+<!--                <p th:text="${song.songName}"></p>-->
+<!--                <p th:text="${song.album.name}"></p>-->
+<!--                <p th:text="${song.artist.name}"></p>-->
+
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
+
